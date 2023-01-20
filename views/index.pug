@@ -2,10 +2,13 @@ extends layout
 
 block content
   h1= title
-  p
-    a(href="/sign-up") Sign up 
-    span to see who posted the messages below
-  p Already have an account? 
-    a(href="/log-in ") Log in
+  if user 
+    p Hello #{user.userName}
+  else 
+    p
+      a(href="/sign-up") Sign up 
+      span to see who posted the messages below
+    p Already have an account? 
+      a(href="/log-in") Log in
   
   //- List of messages if there's message
