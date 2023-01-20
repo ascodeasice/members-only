@@ -1,17 +1,23 @@
 extends layout
 
 block content
-  h1= title
+  h1= user? `${user.firstName} ${user.lastName}`:title
   if user
     p Hello, #{user.userName}
-    a(href="/create")
-      button.indexButton New Message
+      span=user.isMember?", our honorable member.":", someone who's not a member."
+    if user.isMember 
+      a(href="/create")
+        button.indexButton New Message
+    else 
+      p You need to 
+        a(href="/join-member") become a member 
+        span to see more info and post message
     a(href="/log-out") 
       button.indexButton Log out
   else
     p
       a(href="/sign-up") Sign up 
-      span to see who posted the messages below
+      span to see more info and post message
     p Already have an account? 
       a(href="/log-in") Log in
   hr
@@ -21,6 +27,7 @@ block content
         .message 
           h2 #{message.title}
           p= message.text
-          p by #{user?`${message.author.userName}(${message.author.firstName} ${message.author.lastName})`:"[Hidden]"}
+          p by #{user&&user.isMember?`${message.author.userName}(${message.author.firstName} ${message.author.lastName})`:"[Hidden]"}
+          p at #{user&&user.isMember?message.createdAtFormatted:"[Hidden]"}
   else 
     p There's no message on board

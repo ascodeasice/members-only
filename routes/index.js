@@ -22,4 +22,8 @@ router.get("/create", messageController.createGet);
 
 router.post("/create", messageController.createPost);
 
+router.get("/join-member", authController.joinMemberGet);
+
+router.post("/join-member", authController.joinMemberPost);
+
 module.exports = router;

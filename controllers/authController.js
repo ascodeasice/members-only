@@ -75,7 +75,7 @@ exports.signUpPost = [
                         return next(err);
                     }
 
-                    res.redirect("/");
+                    res.redirect("/log-in");
                 });
             });
         }
@@ -99,3 +99,39 @@ exports.logOutGet = (req, res, next) => {
         res.redirect("/");
     });
 }
+
+exports.joinMemberGet = (req, res, next) => {
+    res.render("member-form", {
+        title: "Become a member",
+        user: res.locals.currentUser,
+    });
+}
+
+exports.joinMemberPost = [
+    body("memberPassword")
+        .trim()
+        .isLength({ min: 1 })
+        .withMessage("Thou shalt not pass with an empty box")
+        .custom((value, { req }) => value === "password") // Yes, the secret password is "password"
+        .withMessage("Thou shalt not pass with a wrong password"),
+    (req, res, next) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            res.render("member-form", {
+                title: "Become a member",
+                errors: errors.array(),
+                user: res.locals.currentUser,
+            });
+            return;
+
+        } else {
+            User.findByIdAndUpdate(res.locals.currentUser._id, { isMember: true }, (err, user) => {
+                if (err) {
+                    return next(err);
+                }
+                res.redirect("/");
+            });
+        }
+    }
+]

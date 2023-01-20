@@ -1,0 +1,16 @@
+extends layout 
+block content 
+    h1=title 
+    if user 
+        form(method='POST' action="")
+            .formGroup 
+                input#memberPassword(type="password" name="memberPassword" placeholder="Member password")
+                button.submitButton(type="submit") Submit
+        if errors 
+            ul
+            each error in errors 
+                li.error=error.msg
+    else 
+        p You need to 
+            a(href="/log-in") log in 
+            span first to become a member. 

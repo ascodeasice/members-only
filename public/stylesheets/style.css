@@ -97,5 +97,13 @@ input {
 }
 
 .message>p:first-of-type {
+  background-color: var(--white);
+  border-radius: 5px;
   font-size: 15px;
+  padding: 10px;
+  white-space: break-spaces;
+}
+
+.message>p {
+  padding-left: 5px;
 }
