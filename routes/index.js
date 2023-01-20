@@ -3,6 +3,7 @@ var router = express.Router();
 
 const indexController = require("../controllers/indexController");
 const authController = require('../controllers/authController');
+const messageController = require("../controllers/messageController");
 
 /* GET home page. */
 router.get('/', indexController.indexGet);
@@ -16,5 +17,9 @@ router.get("/log-in", authController.logInGet);
 router.post("/log-in", authController.logInPost);
 
 router.get("/log-out", authController.logOutGet);
+
+router.get("/create", messageController.createGet);
+
+router.post("/create", messageController.createPost);
 
 module.exports = router;

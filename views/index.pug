@@ -14,5 +14,12 @@ block content
       span to see who posted the messages below
     p Already have an account? 
       a(href="/log-in") Log in
-  
-  //- List of messages if there's message
+  hr
+  if messages.length>0
+    each message in messages 
+      .message 
+        h2=message.title
+        p= message.text
+        p= message.author.userName
+  else 
+    p There's no message on board

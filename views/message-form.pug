@@ -1,0 +1,17 @@
+extends layout 
+block content 
+    if user
+        h1=title
+        form(method="POST" action="")
+            .formGroup 
+                input#title(placeholder="Title" name="title" value = message==undefined?"":message.title required='true')
+                textarea(placeholder="Text" name="text" required="true") #{message==undefined?"":message.text}
+                button.submitButton(type="submit") Submit
+        if errors 
+            ul 
+            each error in errors 
+                li.error= error.msg 
+    else 
+        h1 
+            a(href="/log-in") Log in 
+            span to post message 
