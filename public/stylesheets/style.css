@@ -13,7 +13,7 @@ body {
   padding: 50px;
   padding-top: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: var(--brown);
+  background-color: var(--white);
 }
 
 h1 {
@@ -36,7 +36,7 @@ input {
 
 .mainTitle {
   font-size: 3rem;
-  color: var(--white);
+  color: var(--black);
   font-weight: bold;
 }
 
@@ -51,7 +51,7 @@ input {
   width: var(--buttonWidth);
   height: var(--buttonHeight);
   border-radius: 5px;
-  background-color: var(--white);
+  background-color: var(--lightBrown);
 }
 
 .submitButton:hover,
@@ -76,4 +76,26 @@ input {
   resize: vertical;
   padding-left: 5px;
   border-radius: 5px;
+}
+
+.messageContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(min-content, 1fr));
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.message {
+  background-color: var(--lightBrown);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.message>h2 {
+  font-size: 20px;
+}
+
+.message>p:first-of-type {
+  font-size: 15px;
 }

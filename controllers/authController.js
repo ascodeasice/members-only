@@ -75,7 +75,6 @@ exports.signUpPost = [
                         return next(err);
                     }
 
-                    // TODO: redirect to homepage with user logged in
                     res.redirect("/");
                 });
             });

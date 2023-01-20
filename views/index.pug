@@ -16,10 +16,11 @@ block content
       a(href="/log-in") Log in
   hr
   if messages.length>0
-    each message in messages 
-      .message 
-        h2=message.title
-        p= message.text
-        p= message.author.userName
+    .messageContainer
+      each message in messages 
+        .message 
+          h2 #{message.title}
+          p= message.text
+          p by #{user?`${message.author.userName}(${message.author.firstName} ${message.author.lastName})`:"[Hidden]"}
   else 
     p There's no message on board
