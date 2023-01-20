@@ -1,8 +1,41 @@
+:root {
+  --inputWidth: 300px;
+  --inputHeight: 30px;
+  --buttonWidth: 100px;
+  --buttonHeight: 40px;
+}
+
 body {
   padding: 50px;
+  padding-top: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+input {
+  width: var(--inputWidth);
+  height: var(--inputHeight);
+  padding-left: 5px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.mainTitle {
+  font-size: 3rem;
+}
+
+.formGroup {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, min-content);
+  row-gap: 10px;
+}
+
+.submitButton {
+  width: var(--buttonWidth);
+  height: var(--buttonHeight);
+  border-radius: 5px;
 }

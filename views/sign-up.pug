@@ -1,0 +1,12 @@
+extends layout 
+
+block content
+    h1=title 
+    form(method="POST" action="")
+        div.formGroup
+            input#firstName(type="text" required="true" name="firstName" placeholder="First name")
+            input#lastName(type="text" required="true" name="lastName" placeholder="Last name")
+            input#userName(type="text" required="true" name="userName" placeholder="User name")
+            input#password(type="text" required="true" name="password" placeholder="Password")
+            input#confirmPassword(type="text" required="true" name="confirmPassword" placeholder="Confirm password")
+            button.submitButton(type="submit") Submit
