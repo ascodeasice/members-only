@@ -7,7 +7,7 @@
 
 body {
   padding: 50px;
-  padding-top: 10px;
+  padding-top: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -26,6 +26,8 @@ input {
 
 .mainTitle {
   font-size: 3rem;
+  color: black;
+  font-weight: bold;
 }
 
 .formGroup {
