@@ -2,9 +2,13 @@ extends layout
 
 block content
   h1= title
-  if user 
-    p Hello #{user.userName}
-  else 
+  if user
+    p Hello, #{user.userName}
+    a(href="/create")
+      button.indexButton New Message
+    a(href="/log-out") 
+      button.indexButton Log out
+  else
     p
       a(href="/sign-up") Sign up 
       span to see who posted the messages below

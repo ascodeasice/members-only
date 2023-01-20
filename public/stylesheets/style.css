@@ -3,16 +3,26 @@
   --inputHeight: 30px;
   --buttonWidth: 100px;
   --buttonHeight: 40px;
+  --white: #FFEBC9;
+  --lightBrown: #EABF9F;
+  --brown: #B68973;
+  --black: #1E212D;
 }
 
 body {
   padding: 50px;
   padding-top: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: var(--brown);
+}
+
+h1 {
+  color: var(--black);
 }
 
 a {
-  color: #00B7FF;
+  color: var(--white);
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -26,7 +36,7 @@ input {
 
 .mainTitle {
   font-size: 3rem;
-  color: black;
+  color: var(--white);
   font-weight: bold;
 }
 
@@ -36,12 +46,26 @@ input {
   row-gap: 10px;
 }
 
-.submitButton {
+.submitButton,
+.indexButton {
   width: var(--buttonWidth);
   height: var(--buttonHeight);
   border-radius: 5px;
+  background-color: var(--white);
+}
+
+.submitButton:hover,
+.indexButton:hover {
+  color: var(--white);
+  background-color: var(--black);
 }
 
 .error {
   color: red;
+}
+
+.indexButton {
+  width: var(--buttonWidth);
+  height: var(--buttonHeight);
+  border-radius: 5px;
 }
