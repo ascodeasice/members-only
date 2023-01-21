@@ -13,6 +13,9 @@ There're three levels of users:
 
     You can delete others' messages
 
+To become a member, enter "password" in the become member page.
+As for the admin password, you will need to guess yourself.
+
 This project is mainly to practice user authentication
 # Details
 - Use Express with pug for framework
