@@ -113,7 +113,7 @@ exports.joinMemberPost = [
         .isLength({ min: 1 })
         .withMessage("Thou shalt not pass with an empty box")
         .custom((value, { req }) => value === "password") // Yes, the secret password is "password"
-        .withMessage("Thou shalt not pass with a wrong password"),
+        .withMessage("Wrong member password, enter password to be a member"),
     (req, res, next) => {
         const errors = validationResult(req);
 
@@ -134,4 +134,49 @@ exports.joinMemberPost = [
             });
         }
     }
+]
+
+exports.beAdminGet = (req, res) => {
+    res.render("admin-form", {
+        title: "Become an admin",
+        user: res.locals.currentUser,
+    });
+}
+
+exports.beAdminPost = [
+    body("adminPassword")
+        .trim()
+        .isLength({ min: 1 })
+        .withMessage("Admin password is required")
+        .custom((value, { req }) => value === "secret")
+        .withMessage("Wrong admin password, the password is secret"),
+    (req, res, next) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            res.render("admin-form", {
+                title: "Become an admin",
+                user: res.locals.currentUser,
+                errors: errors.array(),
+            });
+            return;
+        }
+        else {
+            // not logged in
+            if (!res.locals.currentUser) {
+                res.render("admin-form", {
+                    title: "Become an admin",
+                    user: res.locals.currentUser,
+                });
+                return;
+            }
+            User.findByIdAndUpdate(res.locals.currentUser, { isAdmin: true }, (err) => {
+                if (err) {
+                    return next(err);
+                }
+                res.redirect("/");
+            });
+        }
+    }
+
 ]

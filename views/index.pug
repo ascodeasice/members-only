@@ -4,8 +4,12 @@ block content
   h1= user? `${user.firstName} ${user.lastName}`:title
   if user
     p Hello, #{user.userName}
-      span=user.isMember?", our honorable member.":", someone who's not a member."
-    if user.isMember 
+      span=user.isMember?user.isAdmin?", our great admin":", our honorable member.":", someone who's not a member."
+    if user.isMember && !user.isAdmin
+        p
+          a(href="/become-admin") Become an admin 
+          span to manage posts   
+    if user.isMember
       a(href="/create")
         button.indexButton New Message
     else 
@@ -29,5 +33,7 @@ block content
           p.text= message.text
           p by #{user&&user.isMember?`${message.author.userName}(${message.author.firstName} ${message.author.lastName})`:"[Hidden]"}
           p at #{user&&user.isMember?message.createdAtFormatted:"[Hidden]"}
+          if user&& user.isAdmin
+            button.deleteButton Delete 
   else 
     p There's no message on board

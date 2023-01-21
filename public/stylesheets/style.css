@@ -47,7 +47,8 @@ input {
 }
 
 .submitButton,
-.indexButton {
+.indexButton,
+.deleteButton {
   width: var(--buttonWidth);
   height: var(--buttonHeight);
   border-radius: 5px;
@@ -60,14 +61,12 @@ input {
   background-color: #f0aa74;
 }
 
-.error {
-  color: red;
+.deleteButton {
+  background-color: var(--white);
 }
 
-.indexButton {
-  width: var(--buttonWidth);
-  height: var(--buttonHeight);
-  border-radius: 5px;
+.error {
+  color: red;
 }
 
 .formGroup>textarea {
@@ -81,7 +80,8 @@ input {
 .messageContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(min-content, 1fr));
+  /* grid-auto-rows: 1fr; */
+  grid-template-rows: repeat(min-fit, min-content);
   row-gap: 10px;
   column-gap: 10px;
 }
@@ -96,7 +96,17 @@ input {
   font-size: 20px;
 }
 
-.message>p:first-of-type {
+.message>p {
+  padding-left: 5px;
+}
+
+.message>p:not(.text) {
+  margin: 5px 0 5px 0;
+}
+
+.message>.text {
+  max-height: 300px;
+  overflow: auto;
   background-color: var(--white);
   border-radius: 5px;
   font-size: 15px;
@@ -104,10 +114,7 @@ input {
   white-space: break-spaces;
 }
 
-.message>p {
-  padding-left: 5px;
-}
-
-.message>p:not(.text) {
-  margin: 5px 0 5px 0;
+.deleteButton:hover {
+  background-color: red;
+  color: white;
 }

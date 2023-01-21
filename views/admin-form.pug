@@ -2,9 +2,13 @@ extends layout
 block content 
     h1=title 
     if user 
+        if !user.isMember
+            p You need to 
+                a(href="/join-member") become a member 
+                span first to become an admin. 
         form(method='POST' action="")
             .formGroup 
-                input#memberPassword(type="password" name="memberPassword" placeholder="Member password" required="true")
+                input#memberPassword(type="password" name="adminPassword" placeholder="Admin password" required="true")
                 button.submitButton(type="submit") Submit
         if errors 
             ul

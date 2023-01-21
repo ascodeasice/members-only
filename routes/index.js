@@ -26,4 +26,8 @@ router.get("/join-member", authController.joinMemberGet);
 
 router.post("/join-member", authController.joinMemberPost);
 
+router.get("/become-admin", authController.beAdminGet);
+
+router.post("/become-admin", authController.beAdminPost);
+
 module.exports = router;
