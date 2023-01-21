@@ -36,4 +36,5 @@ You can delete others' messages
 
 ![](./public/images/admin-view.png)
 # Link
-[Live Preview](#)
+[Live Preview](https://members-only-ascodeasice.up.railway.app/)
+Deploying on railway has a time limit(starter plan), so the link might not work.

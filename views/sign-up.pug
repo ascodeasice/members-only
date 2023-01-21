@@ -10,6 +10,8 @@ block content
             input#password(type="password" required="true" name="password" placeholder="Password" value=(user==undefined?"":user.password))
             input#confirmPassword(type="password" required="true" name="confirmPassword" placeholder="Confirm password")
             button.submitButton(type="submit") Submit
+    p.accountQuestion Already have an account?
+    a(href="/log-in") Log in
     if errors
         ul
             each error in errors 
