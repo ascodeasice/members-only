@@ -107,3 +107,7 @@ input {
 .message>p {
   padding-left: 5px;
 }
+
+.message>p:not(.text) {
+  margin: 5px 0 5px 0;
+}

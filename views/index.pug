@@ -26,7 +26,7 @@ block content
       each message in messages 
         .message 
           h2 #{message.title}
-          p= message.text
+          p.text= message.text
           p by #{user&&user.isMember?`${message.author.userName}(${message.author.firstName} ${message.author.lastName})`:"[Hidden]"}
           p at #{user&&user.isMember?message.createdAtFormatted:"[Hidden]"}
   else 
