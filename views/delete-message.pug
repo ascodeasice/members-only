@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h1=title
+    if !user
+        p You need to 
+            a(href="/log-in") log in 
+            span to delete message 
+    else 
+        if !user.isAdmin
+            p You need to 
+                a(href="/become-admin") be a admin 
+                span to delete message 
+        else  
+            .message 
+                h2=message.title 
+                p.text=message.text 
+                p by #{message.author.userName}(#{message.author.firstName} #{message.author.lastName})
+                p at #{message.createdAtFormatted}
+            p Are you sure you want to delete this message?
+            form(method="POST" action="")
+                input#messageId(type="hidden" name="messageId" value=message._id required="true")
+                button.deleteButton(type="submit") Delete

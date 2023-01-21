@@ -30,4 +30,8 @@ router.get("/become-admin", authController.beAdminGet);
 
 router.post("/become-admin", authController.beAdminPost);
 
+router.get("/delete-message/:id", authController.deleteMessageGet);
+
+router.post("/delete-message/:id", authController.deleteMessagePost);
+
 module.exports = router;

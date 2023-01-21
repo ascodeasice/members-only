@@ -34,6 +34,7 @@ block content
           p by #{user&&user.isMember?`${message.author.userName}(${message.author.firstName} ${message.author.lastName})`:"[Hidden]"}
           p at #{user&&user.isMember?message.createdAtFormatted:"[Hidden]"}
           if user&& user.isAdmin
-            button.deleteButton Delete 
+            a(href='/delete-message/'+message._id)
+              button.deleteButton Delete 
   else 
     p There's no message on board

@@ -2,6 +2,7 @@ const User = require("../models/user");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+const Message = require("../models/message");
 
 exports.signUpGet = (req, res) => {
     res.render("sign-up", { title: "Sign Up" })
@@ -180,3 +181,39 @@ exports.beAdminPost = [
     }
 
 ]
+
+exports.deleteMessageGet = (req, res, next) => {
+    Message.findById(req.params.id)
+        .populate("author")
+        .exec((err, message) => {
+            if (err) {
+                return next(err);
+            }
+            if (message == null) {
+                const error = new Error("Message not found");
+                error.status = 404;
+                next(error);
+            }
+
+            res.render("delete-message", {
+                title: "Delete Message",
+                message: message,
+                user: res.locals.currentUser,
+            });
+        });
+}
+
+exports.deleteMessagePost = (req, res, next) => {
+    Message.findById(req.body.messageId).exec(
+        (err, book) => {
+            if (err) {
+                return next(err);
+            }
+            Message.findByIdAndRemove(req.body.messageId, (err) => {
+                if (err) {
+                    return next(err);
+                }
+                res.redirect("/");
+            });
+        });
+}
